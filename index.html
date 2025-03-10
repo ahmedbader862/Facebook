@@ -1,0 +1,464 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>fire store</title>
+    <link rel="stylesheet" href="style.css">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css" rel="stylesheet">
+
+  </head>
+  <body id="body">
+
+
+    
+    <div class="container">
+
+      <div id="loginPage" class="row">
+
+          <div class="col-md-6 d-none d-md-block">
+              <div class="left-content">
+                  facebook
+                  <p>Facebook helps you connect and share with the people in your life.</p>
+              </div>
+          </div>
+
+          <div class="col-md-6 ">
+            
+              <div class="login-container">
+                  
+                      <div class="mb-3">
+                          <input id="email" type="email" class="form-control" placeholder="Email address or phone number">
+                      </div>
+
+                      <div class="mb-3">
+                          <input id="password" type="password" class="form-control" placeholder="Password">
+                      </div>
+                      
+                      <div id="login" onclick="login()" class="d-grid">
+                          <button type="submit" class="btn btn-primary">Log in</button>
+                      </div>
+
+                      <div class="text-center mt-3">
+                          <a onclick="userSignOut()" class="text-decoration-none">Forgotten password?</a>
+                      </div>
+
+                      <hr>  
+
+                      <div class="d-grid">
+                          <button id="creat" onclick="showCreate()" type="button" style="background-color: orange;" class="btn">Create new account</button>
+                      </div>
+                  
+                  <div class="text-center mt-3">
+                      <p><a href="#" class="text-decoration-none">Create a Page</a> for a celebrity, brand or business.</p>
+                  </div>
+              </div>
+          </div>
+
+      </div>
+
+      <!-- \\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\ -->
+      <!-- \\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\ -->
+   
+
+
+    
+    <div id="signUpPage" class="container" style="display:none;">
+      <header class="text-center py-3">
+        <h1 class="text-primary">facebook</h1>
+    </header>
+        <div  class="signup-container">
+            <div class="signup-header">
+                <h2>Create a new account</h2>
+                <p>It's quick and easy.</p>
+            </div>
+            
+                <div class="row mb-3">
+                    <div class="col">
+                        <input id="Fname" type="text" class="form-control" placeholder="First name">
+                    </div>
+                    <div class="col">
+                        <input id="Sname" type="text" class="form-control" placeholder="Surname">
+                    </div>
+                </div>
+                <div class="mb-3">
+                    <label for="dob" class="form-label">Date of birth</label>
+                    <div class="row">
+                        <div class="col">
+                            <select id="day" class="form-select">
+                                <option>Day</option>
+                         
+                              </select>
+                        </div>
+                        <div class="col">
+                            <select id="month" class="form-select">
+                                <option>Month</option>
+                            </select>
+                        </div>
+                        <div class="col">
+                            <select id="year" class="form-select">
+                                <option value="" >Year</option>
+
+                            </select>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="mb-3">
+                    <label  for="gender" class="form-label">Gender</label>
+                    <div>
+                        <div class="form-check form-check-inline">
+                            <input class="form-check-input" type="radio" name="gender" id="female" value="female">
+                            <label class="form-check-label" for="female">Female</label>
+                        </div>
+                        <div class="form-check form-check-inline">
+                            <input class="form-check-input" type="radio" name="gender" id="male" value="male">
+                            <label class="form-check-label" for="male">Male</label>
+                        </div>
+                       
+                    </div>
+                </div>
+                <div class="mb-3">
+                    <input id="emailC" type="email" class="form-control" placeholder="Mobile number or email address">
+                </div>
+                <div class="mb-3">
+                    <input id="passwordC" type="password" class="form-control" placeholder="New password">
+                </div>
+
+                <div class="d-grid">
+                    <button onclick="create()"  class="btn btn-success">Sign Up</button>
+                </div>
+
+                <div class="text-center mt-3">
+                    <a href="#" onclick="showLogin()" class="text-decoration-none ">Already have an account?</a>
+                </div>
+            
+        </div>
+    </div>
+
+
+
+
+  </div>
+  
+  <footer class="text-center">
+    <div class="d-flex flex-wrap justify-content-center mb-2">
+        <a href="#">English (UK)</a>
+        <a href="#">العربية</a>
+      
+    </div>
+</footer>
+<!-- ############################################################################################# $$-->
+<!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
+
+<div id="home">
+
+
+  <nav class="navbar navbar-expand-lg bg-white shadow-sm">
+    <div class="container-fluid">
+        <div class="row w-100 align-items-center">
+
+            <div class="col-12 col-lg-3 d-flex align-items-center justify-content-between mb-2 mb-lg-0">
+                <img src="logo.jpg" style="width: 40px; border-radius: 7px; margin-right: 10px;" alt="Logo">
+                <input id="search" class="form-control ms-2" style="border-radius: 20px;" type="search" placeholder="Search" aria-label="Search">
+            </div>
+                                 <!-- icons -->
+            <div class="col-12 col-lg-6 d-flex justify-content-around my-2 my-lg-0">
+                <ul class="navbar-nav d-flex flex-row justify-content-center align-items-center">
+                    <li class="nav-item mx-2">
+                        <a class="nav-link text-center" href="#">
+                            <i class="fas fa-home" style="font-size: 20px; color:blue;"></i>
+                            <br>
+                            <span style="font-size: 12px;">Home</span>
+                        </a>
+                    </li>
+                    <li class="nav-item mx-2">
+                        <a class="nav-link text-center" href="#">
+                            <i class="fas fa-user-friends" style="font-size: 20px; color:blue;"></i>
+                            <br>
+                            <span style="font-size: 12px;">Friends</span>
+                        </a>
+                    </li>
+                    <li class="nav-item mx-2">
+                        <a class="nav-link text-center" href="#">
+                            <i class="fas fa-tv" style="font-size: 20px; color:blue;"></i>
+                            <br>
+                            <span style="font-size: 12px;">Watch</span>
+                        </a>
+                    </li>
+                    <li class="nav-item mx-2">
+                        <a class="nav-link text-center" href="#">
+                            <i class="fas fa-store" style="font-size: 20px; color:blue;"></i>
+                            <br>
+                            <span style="font-size: 12px;">Marketplace</span>
+                        </a>
+                    </li>
+                    <li class="nav-item mx-2">
+                        <a class="nav-link text-center" href="#">
+                            <i class="fas fa-users" style="font-size: 20px; color:blue;"></i>
+                            <br>
+                            <span style="font-size: 12px;">Groups</span>
+                        </a>
+                    </li>
+                </ul>
+            </div>
+
+
+           <div class="col-12 col-lg-3 d-flex justify-content-end align-items-center">
+                <a class="nav-link mx-2" href="#">
+                    <i class="fas fa-bell" style="font-size: 20px; color:blue;"></i>
+                </a>
+                <a onclick="userSignOut()" class="nav-link mx-2" href="#">
+                    <i class="fas fa-sign-out-alt" style="font-size: 24px; color: black;"></i>
+                </a>
+                <a onclick="showImage()" id="image" class="nav-link mx-2" href="#">
+                    <!-- image -->
+                </a>
+            </div>
+        </div>
+    </div>
+</nav>
+
+  
+
+<div id="background">
+<!-- background -->
+</div>
+
+<div id="imagePop">
+  <div class="card">
+    <h5 class="card-header">change your picture</h5>
+    <div class="card-body">
+      <h5 class="card-title">Special title treatment</h5>
+      <p class="card-text">With supporting text below as a natural lead-in to additional content.</p>
+    <input type="file" id="fileInput"  accept="image/*">
+
+     <button onclick="uploadImage()" id="imge" class="btn btn-primary">Upload Image</button>
+    <br>
+    <br>
+    <button style="margin-left: 190px;" onclick="cancel()" class="  btn btn-danger">cancel</button>
+
+
+    </div>
+  </div>
+
+</div>
+
+<script type="module">
+
+import { getStorage, ref, uploadBytesResumable, getDownloadURL  } from "https://www.gstatic.com/firebasejs/11.1.0/firebase-storage.js";
+import { initializeApp } from "https://www.gstatic.com/firebasejs/11.1.0/firebase-app.js";
+
+const firebaseConfig = {
+  apiKey: "AIzaSyDXEQhdNyJkZpliy0V4AJQoxYOh13KEgJg",
+  authDomain: "fierfier.firebaseapp.com",
+  databaseURL: "https://fierfier-default-rtdb.firebaseio.com",
+  projectId: "fierfier",
+  storageBucket: "fierfier.appspot.com",
+  messagingSenderId: "876611807213",
+  appId: "1:876611807213:web:f9e4dcb492e4af7202a9e4",
+  measurementId: "G-1J2E50QYKR",
+ 
+  databaseURL:"https://fierfier-default-rtdb.firebaseio.com/"
+  
+};
+
+const app = initializeApp(firebaseConfig);
+const storage = getStorage();
+
+const storageRef = ref(storage);
+
+window.storage = storage;
+window.uploadBytesResumable = uploadBytesResumable ;
+window.storageRef = storageRef ;
+window.getDownloadURL = getDownloadURL ;
+window.ref2 = ref ;
+</script>
+
+<!-- =========================================================== -->
+
+<!-- =========================================================== -->
+<div class="container-fluid px-5 ">
+
+    <div  id="row" class="row p-4" >
+     
+    <div id="left-bar" class="col-lg-2 ">
+    
+      
+    <div  class="card " style="height: auto;">
+      <p style="font-size: larger;" class=" pt-3 ps-2">
+        <i class="fas fa-users" style="font-size: 20px; color:black;"></i>  &nbsp; frinds </p>
+   <!-- ///////USERS//////// -->
+    <div id="users" ></div>
+    </div>
+  
+    <br>
+    
+    <!-- ======================= -->
+    <div id="left2" class="card" >  
+
+      <div class="card-body p-3 me-1">
+        <p class="card-text ">
+          <i class="fa fa-bookmark menu-icon"></i>
+          &nbsp; saved items</p>
+        <p class="card-text ">
+          <i class="fa fa-users menu-icon"></i>
+          &nbsp; Groups</p>
+        <p class="card-text ">
+          <i class="fa fa-envelope menu-icon"></i>
+          &nbsp; Newsletters</p>
+        <p class="card-text ">
+          <i class="fa fa-calendar menu-icon"></i>
+          &nbsp; Events</p>
+      </div>
+    </div>
+    
+    
+   
+  </div>
+
+  <!-- ==================================== -->
+
+  <div id="mid-bar" class="col-lg-6 ">
+  
+    <div class="card" >
+      <div class="card-body">
+     <div class="row" ></div>
+
+     <img src="male.jpg" style="width: 30px; height: 30px; border-radius: 50%;" alt="Profile"> 
+
+     <input id="writePost" style="width: 80%; border-radius: 20px; height: 40px;" type="text"
+     placeholder="  Star a post,try writing with AI">
+
+     <button onclick="post()" id="addPost" style="display: none;" class="btn bg-danger" >post</button>
+
+      </div>
+      <div class="row w-100 d-flex justify-content-center pb-3" >
+      <button style="border: 0px;" class="bg-white w-25">
+        <i class="fa fa-image "></i>
+        media</button >
+      <button style="border: 0px;" class="bg-white w-25">
+        <i class="fa fa-calendar "></i>
+        Event</button >
+      <button style="border: 0px; " class="bg-white w-25">
+        <i class="fa fa-edit x"></i>
+        Write article</button>
+      </div>
+    </div>
+  
+    <br>
+
+    <div id="allPosts" >
+  
+
+    </div>
+   
+  </div>
+  <!-- ==================================== -->
+  
+  <div id="right-bar" class="col-lg-4  ">
+  
+    <div class="container ">
+  
+      <div class="card card-custom">
+        <h6 class="card-title p-2"> Add to your feed</h6>
+  
+        <div class="d-flex align-items-center">
+          <div class="position-relative me-3">
+            <img src="person.jpg" width="50px">
+          </div>
+           
+          <div>
+            <p class="fon mb-0" style="font-weight: 600;">وظائف السعودية</p>
+            <p class="mb-0" style="font-size: small;">Company · Technology, Information and Internet</p>
+          </div>
+        </div>
+        
+        <div class="d-flex justify-content-center mt-2">
+          <a style="border-radius: 50px; font-weight: 500; width: 120px;" href="#" class="btn active" role="button" data-bs-toggle="button" aria-pressed="true">
+            <i class="fa fa-plus"></i> Follow
+          </a>
+        </div>
+        
+            <br>
+            <h6 class="card-title p-2"> Add to your feed</h6>
+  
+            <div class="d-flex align-items-center">
+              <div class="position-relative me-3">
+                <img src="person.jpg" width="50px">
+              </div>
+               
+              <div>
+                <p class="fon mb-0" style="font-weight: 600;">وظائف السعودية</p>
+                <p class="mb-0" style="font-size: small;">Company · Technology, Information and Internet</p>
+              </div>
+            </div>
+            
+            <div class="d-flex justify-content-center mt-2">
+              <a style="border-radius: 50px; font-weight: 500; width: 120px;" href="#" class="btn active" role="button" data-bs-toggle="button" aria-pressed="true">
+                <i class="fa fa-plus"></i> Follow
+              </a>
+            </div>
+            
+  
+                <br>
+                <h6 class="card-title p-2"> Add to your feed</h6>
+  
+                <div class="d-flex align-items-center">
+                  <div class="position-relative me-3">
+                    <img src="person.jpg" width="50px">
+                  </div>
+                   
+                  <div>
+                    <p class="fon mb-0" style="font-weight: 600;">وظائف السعودية</p>
+                    <p class="mb-0" style="font-size: small;">Company · Technology, Information and Internet</p>
+                  </div>
+                </div>
+                
+                <div class="d-flex justify-content-center mt-2">
+                  <a style="border-radius: 50px; font-weight: 500; width: 120px;" href="#" class="btn active" role="button" data-bs-toggle="button" aria-pressed="true">
+                    <i class="fa fa-plus"></i> Follow
+                  </a>
+                </div>
+                
+  
+      
+      
+    </div>
+     
+    <br>
+    
+  
+    <br>
+  
+    <div class="card" >
+      <div style="position: absolute;">
+       <img src="person.jpg" width="300px" alt="">
+      </div>
+    </div>
+  
+  
+  
+  </div>
+  
+  </div>
+</div>
+  
+  <div id="chats" class="row">
+
+  </div>
+
+
+  </div>
+</div>
+  
+
+<script type="module" src="module.js"></script>
+<script type="" src="main.js"></script>
+
+
+ <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.8/dist/umd/popper.min.js"></script>
+ <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.min.js"></script>
+</body>
+  </html>
