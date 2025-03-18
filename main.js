@@ -697,15 +697,15 @@ async function deletePost(postId) {
 
 
 async function getApi() {
-
-  const url = 'https://burgers-hub.p.rapidapi.com/burgers';
+  const url = 'https://the-mexican-food-db.p.rapidapi.com/';
   const options = {
     method: 'GET',
     headers: {
-      'x-rapidapi-key': 'd06fe82818msh0a69ee8ea438e1cp1cb3ddjsnb5004be21bd7',
-      'x-rapidapi-host': 'burgers-hub.p.rapidapi.com'
+      'x-rapidapi-key': '1dc1da1053msh0d5875aff344efbp1650a8jsnfa647a4aa0a7',
+      'x-rapidapi-host': 'the-mexican-food-db.p.rapidapi.com'
     }
   };
+  
 
   
   try {
@@ -723,7 +723,7 @@ async function getApi() {
       }
   
       // إنشاء مسار صحيح مع تحديد الساب كوليكشن
-      await setDoc(doc(db, "menu", "sandwiches", "items", meal.id.toString()), meal);
+      await setDoc(doc(db, "menu", "mexican", "items", meal.id.toString()), meal);
       
       console.log("Added dish:", meal.id, meal.name);
     }
