@@ -1,26 +1,13 @@
 
 
-var loginPage = document.getElementById("loginPage")
-var signUpPage = document.getElementById("signUpPage")
-var home = document.getElementById("home")
 
-var year = document.getElementById("year");
-var month = document.getElementById("month");
-var day = document.getElementById("day");
 
-var Fname = document.getElementById("Fname")
-var Sname = document.getElementById("Sname")
-var genderC = document.getElementById("genderC")
-var emailC = document.getElementById("emailC")
-var passwordC = document.getElementById("passwordC")
 
 var users = document.getElementById("users")
 var chats = document.getElementById("chats")
 
-var image = document.getElementById("image")
 
 var background = document.getElementById("background")
-var imagePop = document.getElementById("imagePop")
 
 var writePost = document.getElementById("writePost")
 var addPost = document.getElementById("addPost")
@@ -34,9 +21,15 @@ var currentUser2 = ""
 
 var user2 = "";
 
+var loginPage = document.getElementById("loginPage")
+var signUpPage = document.getElementById("signUpPage")
+var home = document.getElementById("home")
+
+
+
 function login() {
-  var email = document.getElementById("email").value;
-  var password = document.getElementById("password").value;
+  let email = document.getElementById("email").value;
+  let password = document.getElementById("password").value;
 
   signInWithEmailAndPassword(auth, email, password)
   .then((userCredential) => {
@@ -50,9 +43,9 @@ function login() {
     const errorCode = error.code;
     const errorMessage = error.message;
   });
-  var email = document.getElementById("email").value = ""
-  var password = document.getElementById("password").value = ""
 
+   email = ""
+   password = ""
 
 }
 
@@ -110,6 +103,10 @@ function showLogin() {
 
 function date() {
 
+let year = document.getElementById("year");
+let month = document.getElementById("month");
+let day = document.getElementById("day");
+
   for (var yearN = 1970; yearN <= 2025; yearN++) {
     year.innerHTML += `<option value="${yearN}" >${yearN}</option>`;
 
@@ -150,7 +147,12 @@ date();
 // ==========================================================
 
 function  create() {
-  
+
+let Fname = document.getElementById("Fname")
+let Sname = document.getElementById("Sname")
+let genderC = document.getElementById("genderC")
+let emailC = document.getElementById("emailC")
+let passwordC = document.getElementById("passwordC")
 
   // // Create a reference to the file in Firebase Storage
   // const storageRef = ref(storage, `uploads/male.jpg`)
@@ -168,10 +170,6 @@ function  create() {
 
   
    var gender = document.querySelector('input[name="gender"]:checked');
-
-   var emailC = document.getElementById("emailC").value
-   var passwordC = document.getElementById("passwordC").value
-
 
   if (
     !emailC ||
@@ -273,7 +271,37 @@ function createUser(uid) {
   }
 
 // ================================================================
+// ================================================================
 
+
+function searchResults() {
+  let search = document.getElementById("search");
+  let searchResults = document.getElementById("searchResults");
+  let logo = document.querySelector("#search-side > img");
+  // let logo = document.querySelector("#search-side > i");
+  let backBtn = document.getElementById("back-btn");
+
+  search.addEventListener("focus", (e) => {
+    console.log("dddddddddddddd");
+    searchResults.style.display='block'
+    backBtn.style.display='block';
+    logo.style.display='none'; 
+  }
+);
+ search.addEventListener("blur", (e) => {
+    console.log("dddddddddddddd");
+    searchResults.style.display='none'
+    backBtn.style.display='none'; 
+    logo.style.display='block';
+  }
+);
+}
+
+
+window.addEventListener("DOMContentLoaded", searchResults);
+
+// &&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&
+// &&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&
 async function getAllUsers(currentUser) {
   try {
    
@@ -418,38 +446,46 @@ function send(email, uid) {
 async function getChats(uid) {
   const messagesRef = ref(dbR, `Chats/${uid}/messages`);
 
- await onValue(messagesRef, (snapshot) => {
+  // 👇 تشيك إذا في بيانات أو لأ
+  const snapshot = await get(messagesRef);
+
+  if (!snapshot.exists()) {
+    // ✨ مفيش داتا.. نعمل شات جديد
+    await set(messagesRef, {
+      firstMessage: {
+        message: "مرحبًا! ده أول شات ✨",
+        email: "system",
+        email2: currentUser2.email,
+      }
+    });
+    console.log("تم إنشاء شات جديد");
+  }
+
+  // 👂 نسمع الرسائل ونعرضها
+  onValue(messagesRef, (snapshot) => {
     const messages = snapshot.val();
+    const chatContainer = document.getElementById(`chatContainer-${uid}`);
+    chatContainer.innerHTML = "";
 
     if (messages) {
-      const chatContainer = document.getElementById(`chatContainer-${uid}`);
-      chatContainer.innerHTML = "";
-
       Object.keys(messages).forEach((key) => {
-        const message = messages[key];  
+        const message = messages[key];
         const text = message.message;
 
-        console.log(message.email);
-        console.log(currentUser2.email);
-        
-       if (message.email2 == currentUser2.email) {
-  chatContainer.innerHTML += `
-    <p class="bg-info"> ${text}</p>
-  `;
-} else {
-  chatContainer.innerHTML += `
-    <p class="bg-danger"> ${text}</p>
-  `;
-}
-
-      
+        if (message.email2 == currentUser2.email) {
+          chatContainer.innerHTML += `<p class="bg-info">${text}</p>`;
+        } else {
+          chatContainer.innerHTML += `<p class="bg-danger">${text}</p>`;
+        }
       });
     } else {
-      console.log("No messages found!");
+      chatContainer.innerHTML = "<p class='text-muted'>لا توجد رسائل</p>";
     }
   });
 }
 //000000000000000000 ======================================
+
+var imagePop = document.getElementById("imagePop")
 
 function showImage(){
 imagePop.style.display="block"
@@ -463,43 +499,44 @@ function cancel(){
 //8888888888888888 ======================================777777777777777
 //8888888888888888 ======================================777777777777777
 
+// var image = document.getElementById("image")
 
 function uploadImage() {
-  const fileInput = document.getElementById("fileInput");
-  const file = fileInput.files[0];
+  let fileInput = document.getElementById("fileInput");
+  let file = fileInput.files[0];
 
   if (!file) {
     alert("Please select a file first.");
     return;
   }
 
-  const metadata = {
+  let metadata = {
     contentType: file.type,
   };
 
-  const storageRef = ref2(storage, 'images/' + file.name);
-  const uploadTask = uploadBytesResumable(storageRef, file, metadata);
+  let storageRef = ref2(storage, 'images/' + file.name);
+  let uploadTask = uploadBytesResumable(storageRef, file, metadata);
 
   uploadTask.on(
     'state_changed',
     (snapshot) => {
-      const progress = (snapshot.bytesTransferred / snapshot.totalBytes) * 100;
+      let progress = (snapshot.bytesTransferred / snapshot.totalBytes) * 100;
       console.log('Upload is ' + progress + '% done');
     },
     (error) => {
       console.error("Upload failed:", error);
     },
     async () => {
-      const downloadURL = await getDownloadURL(uploadTask.snapshot.ref);
+      let downloadURL = await getDownloadURL(uploadTask.snapshot.ref);
       console.log('File available at', downloadURL);
       
       console.log(currentUser2.id);
       
 
       try {
-        const userDocRef = doc(db, "users", user2.uid);
+        let userDocRef = doc(db, "users", user2.uid);
       
-        const userDoc = await getDoc(userDocRef);
+        let userDoc = await getDoc(userDocRef);
       
         if (userDoc.exists()) {
 
@@ -540,9 +577,9 @@ writePost.addEventListener("input", () => {
 
 async function post() {
 
-  const postsCollection = collection(db, "users", user2.uid, "posts");
+  let postsCollection = collection(db, "users", user2.uid, "posts");
 
-  const postInfo = writePost.value;  // var up ))
+  let postInfo = writePost.value;  // var up ))
 
   await addDoc(postsCollection, {
     content: postInfo,
@@ -693,44 +730,41 @@ async function deletePost(postId) {
 
 
 
-
-
-
-async function getApi() {
-  const url = 'https://the-mexican-food-db.p.rapidapi.com/';
-  const options = {
-    method: 'GET',
-    headers: {
-      'x-rapidapi-key': '1dc1da1053msh0d5875aff344efbp1650a8jsnfa647a4aa0a7',
-      'x-rapidapi-host': 'the-mexican-food-db.p.rapidapi.com'
-    }
-  };
+// async function getApi() {
+//   const url = 'https://the-mexican-food-db.p.rapidapi.com/';
+//   const options = {
+//     method: 'GET',
+//     headers: {
+//       'x-rapidapi-key': '1dc1da1053msh0d5875aff344efbp1650a8jsnfa647a4aa0a7',
+//       'x-rapidapi-host': 'the-mexican-food-db.p.rapidapi.com'
+//     }
+//   };
   
 
   
-  try {
-    const response = await fetch(url, options);
-    const result = await response.json();
+//   try {
+//     const response = await fetch(url, options);
+//     const result = await response.json();
   
-    if (!Array.isArray(result)) {
-      throw new Error("Invalid data format from API");
-    }
+//     if (!Array.isArray(result)) {
+//       throw new Error("Invalid data format from API");
+//     }
   
-    for (const meal of result) {
-      if (!meal.id) {
-        console.warn("Skipping meal without ID:", meal);
-        continue;
-      }
+//     for (const meal of result) {
+//       if (!meal.id) {
+//         console.warn("Skipping meal without ID:", meal);
+//         continue;
+//       }
   
-      // إنشاء مسار صحيح مع تحديد الساب كوليكشن
-      await setDoc(doc(db, "menu", "mexican", "items", meal.id.toString()), meal);
+//       // إنشاء مسار صحيح مع تحديد الساب كوليكشن
+//       await setDoc(doc(db, "menu", "mexican", "items", meal.id.toString()), meal);
       
-      console.log("Added dish:", meal.id, meal.name);
-    }
+//       console.log("Added dish:", meal.id, meal.name);
+//     }
   
-  } catch (error) {
-    console.error("Error:", error);
-  }
+//   } catch (error) {
+//     console.error("Error:", error);
+//   }
 
 
 
@@ -784,7 +818,7 @@ async function getApi() {
   // } catch (error) {
   //   console.error("Failed to fetch data:", error);
   // }
-}
+// }
 
 // getApi();
 

@@ -1,6 +1,7 @@
 #body {
   background-color: #f0f2f5;
   font-family: Arial, sans-serif;
+  
 }
 #loginPage {
 
@@ -10,6 +11,116 @@
   display: flex;
   align-items: center;
 }
+
+/* &&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&& */
+
+.body{
+  margin: 0px;
+  padding: 0px;
+  background-color: #092349;
+
+}
+
+.nav-item{
+  width: 120px;
+  height: 50px;
+  margin-top: 0px;
+  display: flex;
+  justify-content: center;
+}
+.nav-item:hover{
+  display: flex;
+  background-color: #bccefb85 ;
+  border-radius: 10px;
+}
+
+#nav-right{
+  color: #000;
+}
+
+.nav-item > a > i {
+  color: #999;
+  margin-top: 8px;
+  font-size: 25px;
+  text-decoration: none;
+}
+
+/* ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^ */
+/* ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^ */
+
+#back-btn {
+  display: none;
+  font-size: 17px;
+  margin: 10px;
+  cursor: pointer;
+  padding: 10px;
+  color: black;
+  border-radius: 150px;
+  z-index: 10000;
+}
+#back-btn:hover {
+ background-color: #F0F2F5;
+ border-radius: 150px;
+}
+
+
+#search-side > img {
+  position: relative;
+  width: 44px;
+  height: 44px;
+  margin-left: 15px;
+  z-index: 100;
+
+}
+
+.search-input {
+  position: relative;
+  width: 100%;
+}
+
+.search-input  i {
+  position: absolute;
+  left: 20px;
+  top: 50%;
+  transform: translateY(-50%);
+  color: #999999;
+  font-size: 16px;
+  z-index: 10000;
+
+}
+
+.search-input input {
+  position: relative;
+  width: 244px;
+  height: 40px;
+  border-radius: 50px;
+  border: none;
+  background-color: #F0F2F5;
+  padding-left: 40px; 
+  z-index: 100;
+}
+
+.search-input input:focus {
+  outline: none;
+  box-shadow: none;
+   background-color: #F0F2F5;
+}
+#searchResults{
+  display: none;
+  position: absolute;
+  top: 0px;
+  left: 0px;
+  width: 350px;
+  height: 500px;
+  background-color: #fff;
+  border-radius: 8px;
+   box-shadow: 0 4px 12px rgba(2, 0, 10, 0.808);
+  z-index: 10;
+}
+
+/* %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% */
+/* %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% */
+
 .left-content {
   
   color: #1877f2;
@@ -80,7 +191,18 @@ footer a {
   background-color: #165ec9;
 }
 
+/* =================================================== */
+/* =================================================== */
+/* =================================================== */
+/* =================================================== */
+
+
 @media (max-width: 768px) {
+
+  
+
+  /* =================================================== */
+
   .left-content {
       display: none;
   }
@@ -93,11 +215,6 @@ footer a {
       text-align: center;
   }
 }
-/* =================================================== */
-/* =================================================== */
-/* =================================================== */
-/* =================================================== */
-
 
 #home{
   display: none;
@@ -139,12 +256,29 @@ color: #000;
   #imagePop{
     display:none;
     position: absolute;
-    top:35%;
+    top:55%;
     right: 35%;
   }
 
+/* $$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$ */
+/* $$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$ */
+/* $$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$ */
+
   @media screen and  (min-width:500px) and (max-width: 1040px)
 {
+
+  #search{
+display:none ;
+}
+
+.search-input  i{
+  background-color:#05295e;
+  padding: 10px;
+  border-radius: 50%;
+}
+ 
+/* ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^ */
+
 #left-bar{
  display: flex;
  flex-direction: column;
@@ -160,10 +294,7 @@ color: #000;
   flex-direction: column;
   width: 70%;
 }
-#search{
-display:none;
 
-}
 
 #icons{
 display: flex;
@@ -171,6 +302,12 @@ justify-content: center;
 width: 100%;
 }
 }
+
+/* @@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@*/
+/* @@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@*/
+/* @@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@*/
+
+
 @media screen and (max-width:500px){
   #left-bar{
       display: flex;

@@ -155,59 +155,61 @@
 <div id="home">
 
 
-  <nav class="navbar navbar-expand-lg bg-white shadow-sm">
-    <div class="container-fluid">
-        <div class="row w-100 align-items-center">
+  <nav class="navbar navbar-expand-lg  bg-white shadow-sm row">
 
-            <div class="col-12 col-lg-3 d-flex align-items-center justify-content-between mb-2 mb-lg-0">
-                <img src="logo.jpg" style="width: 40px; border-radius: 7px; margin-right: 10px;" alt="Logo">
-                <input id="search" class="form-control ms-2" style="border-radius: 20px;" type="search" placeholder="Search" aria-label="Search">
-            </div>
+       <div id="search-side" class="col-lg-3 col-md-1 d-flex align-items-center">
+
+        <div id="searchResults" class="position-absolute  p-0 m-0 bg-white border rounded ">
+            <!-- Search results will be displayed here -->
+        </div>
+
+     <i id="back-btn" class=" btn fas fa-arrow-left"></i>  
+
+
+        <img src="download.jpeg" alt="Logo">
+
+        <div class="search-input">
+         <i id="ss"  class="fas fa-search"></i>
+          <input id="search" class="form-control ms-2" type="search" placeholder="Search Facebook" aria-label="Search">
+          
+        </div>
+      </div>
+
                                  <!-- icons -->
-            <div class="col-12 col-lg-6 d-flex justify-content-around my-2 my-lg-0">
-                <ul class="navbar-nav d-flex flex-row justify-content-center align-items-center">
-                    <li class="nav-item mx-2">
-                        <a class="nav-link text-center" href="#">
-                            <i class="fas fa-home" style="font-size: 20px; color:blue;"></i>
-                            <br>
-                            <span style="font-size: 12px;">Home</span>
+            <div class="col-lg-6 col-md-3 d-flex  ">
+                <ul class="navbar-nav d-flex flex-row justify-content-center w-100  ">
+                    <li class="nav-item   ">
+                        <a class="nav-link text-center" href="#" title="Home">
+                            <i class="fas fa-home " ></i>
                         </a>
                     </li>
-                    <li class="nav-item mx-2">
+                    <li class="nav-item ">
                         <a class="nav-link text-center" href="#">
-                            <i class="fas fa-user-friends" style="font-size: 20px; color:blue;"></i>
-                            <br>
-                            <span style="font-size: 12px;">Friends</span>
+                            <i class="fas fa-user-friends " ></i>
                         </a>
                     </li>
-                    <li class="nav-item mx-2">
-                        <a class="nav-link text-center" href="#">
-                            <i class="fas fa-tv" style="font-size: 20px; color:blue;"></i>
-                            <br>
-                            <span style="font-size: 12px;">Watch</span>
+                    <li class="nav-item  ">
+                        <a class="nav-link text-center " href="#">
+                            <i class="fas fa-tv " ></i>
                         </a>
                     </li>
-                    <li class="nav-item mx-2">
+                    <li class="nav-item ">
                         <a class="nav-link text-center" href="#">
-                            <i class="fas fa-store" style="font-size: 20px; color:blue;"></i>
-                            <br>
-                            <span style="font-size: 12px;">Marketplace</span>
+                            <i class="fas fa-store " ></i>
                         </a>
                     </li>
-                    <li class="nav-item mx-2">
+                    <li class="nav-item ">
                         <a class="nav-link text-center" href="#">
-                            <i class="fas fa-users" style="font-size: 20px; color:blue;"></i>
-                            <br>
-                            <span style="font-size: 12px;">Groups</span>
+                            <i class="fas fa-users " ></i>
                         </a>
                     </li>
                 </ul>
             </div>
 
 
-           <div class="col-12 col-lg-3 d-flex justify-content-end align-items-center">
+           <div id="nav-right" class="col-lg-3 col-md-1 d-flex justify-content-end align-items-center">
                 <a class="nav-link mx-2" href="#">
-                    <i class="fas fa-bell" style="font-size: 20px; color:blue;"></i>
+                    <i class="fas fa-bell" ></i>
                 </a>
                 <a onclick="userSignOut()" class="nav-link mx-2" href="#">
                     <i class="fas fa-sign-out-alt" style="font-size: 24px; color: black;"></i>
@@ -216,15 +218,10 @@
                     <!-- image -->
                 </a>
             </div>
-        </div>
-    </div>
+        <!-- </div> -->
+    <!-- </div> -->
 </nav>
 
-  
-
-<div id="background">
-<!-- background -->
-</div>
 
 <div id="imagePop">
   <div class="card">
@@ -445,8 +442,10 @@ window.ref2 = ref ;
   </div>
 </div>
   
-  <div id="chats" class="row">
+  <!-- ##### Chats #### -->
+  <!-- ##### Chats #### -->
 
+  <div id="chats" class="row">
   </div>
 
 
